@@ -1,7 +1,10 @@
 package com.customer.api.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,19 +30,19 @@ public class MsgApiController {
 	
 	@PostMapping("/sendAllUser")
     @ApiOperation(value = "向所有在线会员推送消息")
-	public ApiResp<String> sendAllUser(AllUserMsgReq allUserMsgReq){
+	public ApiResp<String> sendAllUser(@RequestBody @Valid AllUserMsgReq allUserMsgReq){
 		return apiService.sendAllUser(allUserMsgReq);
 	}
 	
 	@PostMapping("/sendToUser")
     @ApiOperation(value = "向指定会员推送系统消息")
-	public ApiResp<String> sendToUser(UserMsgReq userMsgReq){
+	public ApiResp<String> sendToUser(@RequestBody @Valid UserMsgReq userMsgReq){
 		return apiService.sendToUser(userMsgReq);
 	}
 	
 	@PostMapping("/sendFinanceAduit")
     @ApiOperation(value = "向财务推送待审核通知")
-	public ApiResp<String> sendFinanceAduit(FinanceMsgReq financeMsgReq){
+	public ApiResp<String> sendFinanceAduit(@RequestBody @Valid FinanceMsgReq financeMsgReq){
 		return apiService.sendFinanceAduit(financeMsgReq);
 	}
 }

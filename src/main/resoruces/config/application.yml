@@ -50,8 +50,8 @@ spring:
     #单机配置
     host: paydev.mvkbnb.com
     password: pukswxpnq5NQ5CTZK8A6aCHaxyJdVtET
-    port: 21121
-    database: 0
+    port: 21141
+    database: 12
 mybatis-plus:
     configuration:
         log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
