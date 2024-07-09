@@ -13,7 +13,7 @@ public class MsgDto {
 	/**
 	 * 消息类型(0客服消息，1普通消息，2转人工)
 	 */
-	@ApiModelProperty(value = "消息类型(0客服消息，1普通消息，2转人工，3系统错误提示消息,4系统通知,5财务待审通知)")
+	@ApiModelProperty(value = "消息类型(-1心跳消息,0客服消息，1普通消息，2转人工，3系统错误提示消息,4系统通知,5财务待审通知)")
 	private Integer type;
 	
 	/**

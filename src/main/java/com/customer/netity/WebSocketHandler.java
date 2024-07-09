@@ -106,13 +106,14 @@ public class WebSocketHandler extends SimpleChannelInboundHandler<TextWebSocketF
 	protected void channelRead0(ChannelHandlerContext ctx, TextWebSocketFrame msg) throws Exception {
 		// TODO Auto-generated method stub
 		MsgDto msgDto = JSON.toJavaObject(JSON.parseObject(msg.text()), MsgDto.class);
-
+		log.info("=========>{}",msg.text());
+		log.info("=========>{}",msgDto.getType());
 		if (ObjectUtils.isEmpty(msgDto.getType())) {
 			log.error("消息发送失败,消息类型不能为空");
 			ctx.channel().writeAndFlush(new TextWebSocketFrame(JSON.toJSONString(MsgUtil.errorPromptMsg("消息发送失败,消息类型不能为空"))));
 			return;
 		}
-		log.info("=========>{}",msgDto.getType());
+		
 		if(msgDto.getType() == -1) {
 			return;
 		}else if (msgDto.getType() == 0) {// 客服消息
