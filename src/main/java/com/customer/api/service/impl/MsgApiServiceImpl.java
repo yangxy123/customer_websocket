@@ -44,7 +44,6 @@ public class MsgApiServiceImpl implements MsgApiService {
 	@Override
 	public ApiResp<String> sendToUser(UserMsgReq userMsgReq) {
 		// TODO Auto-generated method stub
-		log.info("====>2");
 		if(userMsgReq.getType() != 3 && userMsgReq.getType() != 4) {
 			throw new ParamException("消息类型错误");
 		}
@@ -52,11 +51,9 @@ public class MsgApiServiceImpl implements MsgApiService {
 		if(userMsgReq.getTextType() != 0 && userMsgReq.getTextType() != 1) {
 			throw new ParamException("消息内容类型类型错误");
 		}
-		log.info("====>1");
 		MsgDto msgDto = new MsgDto();
 		BeanUtils.copyProperties(userMsgReq, msgDto);
 		webSocketHandler.sendMsgToUser(userMsgReq.getReceiver(), msgDto,userMsgReq.getIsClose());
-		log.info("====>3");
 		return ApiResp.sucess();
 	}
 
