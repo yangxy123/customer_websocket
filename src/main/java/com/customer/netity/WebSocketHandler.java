@@ -284,8 +284,13 @@ public class WebSocketHandler extends SimpleChannelInboundHandler<TextWebSocketF
 	 * @return
 	 */
 	public boolean sendMsgToUser(String userName, MsgDto msgDto,Boolean isClose) {
+
+		log.info("====>4");
 		if (ChanelGroup.userChanelMap.containsKey(userName)) {
 			ChanelGroup.userChanelMap.get(userName).writeAndFlush(new TextWebSocketFrame(JSON.toJSONString(msgDto)));
+
+			log.info("====>5");
+			
 			if(isClose) {
 				ChanelGroup.userChanelMap.get(userName).close();
 			}
