@@ -112,8 +112,9 @@ public class WebSocketHandler extends SimpleChannelInboundHandler<TextWebSocketF
 			ctx.channel().writeAndFlush(new TextWebSocketFrame(JSON.toJSONString(MsgUtil.errorPromptMsg("消息发送失败,消息类型不能为空"))));
 			return;
 		}
-
-		if (msgDto.getType() == 0) {// 客服消息
+		if(msgDto.getType() == -1) {
+			return;
+		}else if (msgDto.getType() == 0) {// 客服消息
 			String customerName = NettyChannelUtils.getInfoFromChannel(ctx.channel(),
 					NettyChannelInfoEnums.CHANNEL_CUSTOMER_NAME.key);
 			if (StringUtils.isEmpty(customerName)) {// AI客服智能回答
