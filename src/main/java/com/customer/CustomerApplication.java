@@ -23,7 +23,7 @@ public class CustomerApplication
     {
     	SpringApplication.run(CustomerApplication.class, args);
     	log.info("\n----------------------------------------------------------\n\t" +
-                "客户系统启动成功! "+
+                "客户系统启动成功1! "+
                 "----------------------------------------------------------");
     }
 }
