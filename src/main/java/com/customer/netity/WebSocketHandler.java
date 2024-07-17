@@ -105,6 +105,7 @@ public class WebSocketHandler extends SimpleChannelInboundHandler<TextWebSocketF
 
 	@Override
 	protected void channelRead0(ChannelHandlerContext ctx, TextWebSocketFrame msg) throws Exception {
+		log.info("==>1");
 		// TODO Auto-generated method stub
 		MsgDto msgDto = JSON.toJavaObject(JSON.parseObject(msg.text()), MsgDto.class);
 		if (ObjectUtils.isEmpty(msgDto.getType())) {
@@ -213,6 +214,7 @@ public class WebSocketHandler extends SimpleChannelInboundHandler<TextWebSocketF
 	 */
 	@Override
 	public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+		log.info("==>1");
 		String userId = NettyChannelUtils.getInfoFromChannel(ctx.channel(),
 				NettyChannelInfoEnums.CHANNEL_USER_NAME.key);
 		ChanelGroup.userChanelMap.remove(userId);
