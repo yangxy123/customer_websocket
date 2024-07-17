@@ -50,6 +50,7 @@ public class WebSocketHandler extends SimpleChannelInboundHandler<TextWebSocketF
 
 	@Override
 	public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+		log.info("==>1");
 		boolean linkFlag = false;
 		if (msg instanceof FullHttpRequest) {
 			// 获取请求头中的身份验证令牌
