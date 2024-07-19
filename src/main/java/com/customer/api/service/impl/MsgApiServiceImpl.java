@@ -44,6 +44,7 @@ public class MsgApiServiceImpl implements MsgApiService {
 	@Override
 	public ApiResp<String> sendToUser(UserMsgReq userMsgReq) {
 		// TODO Auto-generated method stub
+		log.info("1");
 		if(userMsgReq.getType() != 3 && userMsgReq.getType() != 4) {
 			throw new ParamException("消息类型错误");
 		}
