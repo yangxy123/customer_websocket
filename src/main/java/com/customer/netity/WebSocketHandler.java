@@ -235,7 +235,7 @@ public class WebSocketHandler extends SimpleChannelInboundHandler<TextWebSocketF
 			ChanelGroup.userChanelMap.remove(userName);
 			String customerName = NettyChannelUtils.getInfoFromChannel(ctx.channel(),
 					NettyChannelInfoEnums.CHANNEL_CUSTOMER_NAME.key);
-			redisUtils.hdel(RedisKeyEnums.CUSTOMER_TO_USER + customerName, userName);
+			redisUtils.hdel(RedisKeyEnums.CUSTOMER_TO_USER.key + customerName, userName);
 		} else if (NettyUserTypeEnums.FINANCE_USER.userType.equals(userType)) {// 财务
 			ChanelGroup.financeChanelMap.remove(userName);
 		} else if (NettyUserTypeEnums.CUSTOMER_USER.userType.equals(userType)) {// 客服
