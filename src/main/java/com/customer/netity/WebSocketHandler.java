@@ -225,11 +225,12 @@ public class WebSocketHandler extends SimpleChannelInboundHandler<TextWebSocketF
 	 */
 	@Override
 	public void channelInactive(ChannelHandlerContext ctx) throws Exception {
-
+		
 		String userType = NettyChannelUtils.getInfoFromChannel(ctx.channel(),
 				NettyChannelInfoEnums.CHANNEL_USERTYPE.key);
 		String userName = NettyChannelUtils.getInfoFromChannel(ctx.channel(),
 				NettyChannelInfoEnums.CHANNEL_USER_NAME.key);
+		log.info("用户{}断开链接，用户类型{}",userName,userType);
 		if (NettyUserTypeEnums.REGULAR_USER.userType.equals(userType)) {// 用户
 			ChanelGroup.userChanelMap.remove(userName);
 			String customerName = NettyChannelUtils.getInfoFromChannel(ctx.channel(),
