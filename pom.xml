@@ -137,6 +137,9 @@
 				<includes>
 					<include>*.xml</include>
 				</includes>
+				<excludes>
+					<exclude>config-local.properties</exclude>
+				</excludes>
 			</resource>
 		</resources>
 		<plugins>
